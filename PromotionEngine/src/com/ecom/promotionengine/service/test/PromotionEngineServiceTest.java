@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import com.ecom.promotionengine.service.PromotionService;
 import com.ecom.promotionengine.service.domain.Cart;
+import com.ecom.promotionengine.service.impl.PromotionServiceImpl;
 
 public class PromotionEngineServiceTest {
 
@@ -18,6 +19,7 @@ public class PromotionEngineServiceTest {
 		 * Test setup Unit price for SKU IDss A 50 B 30 C 20 D 15 
 		 * Active Promotions :  3 of A's for 130 2 of B's for 45 C & D for 30
 		 */
+		promotionService = new PromotionServiceImpl();
 	}
 
 
