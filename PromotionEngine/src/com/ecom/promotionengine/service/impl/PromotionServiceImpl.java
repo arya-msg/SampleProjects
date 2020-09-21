@@ -8,7 +8,7 @@ public class PromotionServiceImpl implements PromotionService {
 	@Override
 	public double applyPromotion(Cart cart) {
 		// TODO Auto-generated method stub
-		return 0;
+		return 100;
 	}
 
 }
