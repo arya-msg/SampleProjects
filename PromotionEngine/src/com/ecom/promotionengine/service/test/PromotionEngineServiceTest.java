@@ -1,12 +1,17 @@
 package com.ecom.promotionengine.service.test;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
 import org.junit.Test;
 
+import com.ecom.promotionengine.service.PromotionService;
+import com.ecom.promotionengine.service.domain.Cart;
+
 public class PromotionEngineServiceTest {
 
-	//private PromotionService promotionService;
-	//private Cart cart;
+	private PromotionService promotionService;
+	private Cart cart;
 	@Before
 	public void setUp() throws Exception {
 		/*
@@ -19,7 +24,7 @@ public class PromotionEngineServiceTest {
 	@Test
 	public void testPromotionEngineScenarioA() {
 	// Scenario B : 1 * A 50 1 * B 30 1 * C 20 ====== Total 100
-		//assertEquals(100, promotionService.applyPromotion(cart),0);
+		assertEquals(100, promotionService.applyPromotion(cart),0);
 	}
 	
 	@Test
