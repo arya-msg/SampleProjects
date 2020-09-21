@@ -14,6 +14,7 @@ import com.ecom.promotionengine.service.domain.Cart;
 import com.ecom.promotionengine.service.domain.Product;
 import com.ecom.promotionengine.service.domain.Promotion;
 import com.ecom.promotionengine.service.impl.PromotionServiceImpl;
+import com.ecom.promotionengine.utility.PromotionEngineConstant;
 
 public class PromotionEngineServiceTest {
 
@@ -29,22 +30,19 @@ public class PromotionEngineServiceTest {
 		 * Test setup Unit price for SKU IDss A 50 B 30 C 20 D 15 
 		 * Active Promotions :  3 of A's for 130 2 of B's for 45 C & D for 30
 		 */
-		
-		
 		//In real time projects it will be a db fetch operation.
-		
 		productList = new ArrayList<Product>();
-		Product productA = new Product('A',50);
-		Product productB = new Product('B',30);
-		Product productC = new Product('C',20);
-		Product productD = new Product('D',15);
+		Product productA = new Product(PromotionEngineConstant.SKU_A,50);
+		Product productB = new Product(PromotionEngineConstant.SKU_B,30);
+		Product productC = new Product(PromotionEngineConstant.SKU_C,20);
+		Product productD = new Product(PromotionEngineConstant.SKU_D,15);
 		productList.add(productA);
 		productList.add(productB);
 		productList.add(productC);
 		productList.add(productD);
 		promotionsToBeApplied = new ArrayList<Promotion>();
-		Promotion promoA = new Promotion("PromoA","buy 'n' items of a SKU for a fixed price (3 A's for 130) ");
-		Promotion promoB = new Promotion("PromoB","buy SKU 1 & SKU 2 for a fixed price ( C + D = 30 )");
+		Promotion promoA = new Promotion(PromotionEngineConstant.PROMO_A,PromotionEngineConstant.PROMO_A_DESC);
+		Promotion promoB = new Promotion(PromotionEngineConstant.PROMO_B,PromotionEngineConstant.PROMO_B_DESC);
 		promotionsToBeApplied.add(promoA);
 		promotionsToBeApplied.add(promoB);
 				
@@ -59,10 +57,9 @@ public class PromotionEngineServiceTest {
 	@Test
 	public void testPromotionEngineScenarioA() {
 	// Scenario B : 1 * A 50 1 * B 30 1 * C 20 ====== Total 100
-		System.out.println(productList);
-		skuList.add('A');
-		skuList.add('B');
-		skuList.add('C');
+		skuList.add(PromotionEngineConstant.SKU_A);
+		skuList.add(PromotionEngineConstant.SKU_B);
+		skuList.add(PromotionEngineConstant.SKU_C);
 		cart.setSkuList(skuList);
 		assertEquals(100, promotionService.applyPromotion(cart,productList,promotionsToBeApplied),0);
 	}
@@ -70,17 +67,17 @@ public class PromotionEngineServiceTest {
 	@Test
 	public void testPromotionEngineScenarioB() {
 	// Scenario B : 5 * A 130 + 2*50 5 * B 45 + 45 + 30 1 * C 20 ====== Total 370
-		skuList.add('A');
-		skuList.add('B');
-		skuList.add('C');
-		skuList.add('A');
-		skuList.add('B');
-		skuList.add('A');
-		skuList.add('B');
-		skuList.add('A');
-		skuList.add('B');
-		skuList.add('A');
-		skuList.add('B');
+		skuList.add(PromotionEngineConstant.SKU_A);
+		skuList.add(PromotionEngineConstant.SKU_B);
+		skuList.add(PromotionEngineConstant.SKU_C);
+		skuList.add(PromotionEngineConstant.SKU_A);
+		skuList.add(PromotionEngineConstant.SKU_B);
+		skuList.add(PromotionEngineConstant.SKU_A);
+		skuList.add(PromotionEngineConstant.SKU_B);
+		skuList.add(PromotionEngineConstant.SKU_A);
+		skuList.add(PromotionEngineConstant.SKU_B);
+		skuList.add(PromotionEngineConstant.SKU_A);
+		skuList.add(PromotionEngineConstant.SKU_B);
 		cart.setSkuList(skuList);
 		assertEquals(370, promotionService.applyPromotion(cart,productList,promotionsToBeApplied),0);
 	}
@@ -88,16 +85,16 @@ public class PromotionEngineServiceTest {
 	@Test
 	public void testPromotionEngineScenarioC() {
 	// Scenario C : 3 * A 130 5 * B 45 + 45 + 1 * 30 1 * C - 1 * D 30 ====== Total 280
-		skuList.add('A');
-		skuList.add('B');
-		skuList.add('C');
-		skuList.add('A');
-		skuList.add('B');
-		skuList.add('A');
-		skuList.add('B');
-		skuList.add('D');
-		skuList.add('B');
-		skuList.add('B');
+		skuList.add(PromotionEngineConstant.SKU_A);
+		skuList.add(PromotionEngineConstant.SKU_B);
+		skuList.add(PromotionEngineConstant.SKU_C);
+		skuList.add(PromotionEngineConstant.SKU_A);
+		skuList.add(PromotionEngineConstant.SKU_B);
+		skuList.add(PromotionEngineConstant.SKU_A);
+		skuList.add(PromotionEngineConstant.SKU_B);
+		skuList.add(PromotionEngineConstant.SKU_D);
+		skuList.add(PromotionEngineConstant.SKU_B);
+		skuList.add(PromotionEngineConstant.SKU_B);
 		cart.setSkuList(skuList);
 		assertEquals(280, promotionService.applyPromotion(cart,productList,promotionsToBeApplied),0);
 	}
