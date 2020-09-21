@@ -11,6 +11,12 @@ public class Product implements Serializable {
 	
 	private char skuId;
 	private double price;
+	
+	public Product(char skuId, double price) {
+		super();
+		this.skuId = skuId;
+		this.price = price;
+	}
 	public char getSkuId() {
 		return skuId;
 	}
@@ -22,6 +28,10 @@ public class Product implements Serializable {
 	}
 	public void setPrice(double price) {
 		this.price = price;
+	}
+	@Override
+	public String toString() {
+		return "Product [skuId=" + skuId + ", price=" + price + "]";
 	}
 	
 
