@@ -29,6 +29,10 @@ public class PromotionEngineServiceTest {
 		 * Test setup Unit price for SKU IDss A 50 B 30 C 20 D 15 
 		 * Active Promotions :  3 of A's for 130 2 of B's for 45 C & D for 30
 		 */
+		
+		
+		//In real time projects it will be a db fetch operation.
+		
 		productList = new ArrayList<Product>();
 		Product productA = new Product('A',50);
 		Product productB = new Product('B',30);
@@ -66,13 +70,13 @@ public class PromotionEngineServiceTest {
 	@Test
 	public void testPromotionEngineScenarioB() {
 	// Scenario B : 5 * A 130 + 2*50 5 * B 45 + 45 + 30 1 * C 20 ====== Total 370
-		//assertEquals(370, promotionService.applyPromotion(cart),0);
+		//assertEquals(370, promotionService.applyPromotion(cart,productList,promotionsToBeApplied),0);
 	}
 	
 	@Test
 	public void testPromotionEngineScenarioC() {
 	// Scenario C : 3 * A 130 5 * B 45 + 45 + 1 * 30 1 * C - 1 * D 30 ====== Total 280
-		//assertEquals(280, promotionService.applyPromotion(cart),0);
+		//assertEquals(280, promotionService.applyPromotion(cart,productList,promotionsToBeApplied),0);
 	}
 
 }
