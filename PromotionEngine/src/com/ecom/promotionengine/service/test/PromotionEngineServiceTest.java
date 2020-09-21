@@ -88,7 +88,17 @@ public class PromotionEngineServiceTest {
 	@Test
 	public void testPromotionEngineScenarioC() {
 	// Scenario C : 3 * A 130 5 * B 45 + 45 + 1 * 30 1 * C - 1 * D 30 ====== Total 280
-		
+		skuList.add('A');
+		skuList.add('B');
+		skuList.add('C');
+		skuList.add('A');
+		skuList.add('B');
+		skuList.add('A');
+		skuList.add('B');
+		skuList.add('D');
+		skuList.add('B');
+		skuList.add('B');
+		cart.setSkuList(skuList);
 		assertEquals(280, promotionService.applyPromotion(cart,productList,promotionsToBeApplied),0);
 	}
 
