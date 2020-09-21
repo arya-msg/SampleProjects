@@ -37,14 +37,14 @@ public class PromotionEngineServiceTest {
 		Product productA = new Product('A',50);
 		Product productB = new Product('B',30);
 		Product productC = new Product('C',20);
-		Product productD = new Product('C',15);
+		Product productD = new Product('D',15);
 		productList.add(productA);
 		productList.add(productB);
 		productList.add(productC);
 		productList.add(productD);
 		promotionsToBeApplied = new ArrayList<Promotion>();
 		Promotion promoA = new Promotion("PromoA","buy 'n' items of a SKU for a fixed price (3 A's for 130) ");
-		Promotion promoB = new Promotion("promoB","buy SKU 1 & SKU 2 for a fixed price ( C + D = 30 )");
+		Promotion promoB = new Promotion("PromoB","buy SKU 1 & SKU 2 for a fixed price ( C + D = 30 )");
 		promotionsToBeApplied.add(promoA);
 		promotionsToBeApplied.add(promoB);
 				
@@ -70,13 +70,15 @@ public class PromotionEngineServiceTest {
 	@Test
 	public void testPromotionEngineScenarioB() {
 	// Scenario B : 5 * A 130 + 2*50 5 * B 45 + 45 + 30 1 * C 20 ====== Total 370
-		//assertEquals(370, promotionService.applyPromotion(cart,productList,promotionsToBeApplied),0);
+		
+		assertEquals(370, promotionService.applyPromotion(cart,productList,promotionsToBeApplied),0);
 	}
 	
 	@Test
 	public void testPromotionEngineScenarioC() {
 	// Scenario C : 3 * A 130 5 * B 45 + 45 + 1 * 30 1 * C - 1 * D 30 ====== Total 280
-		//assertEquals(280, promotionService.applyPromotion(cart,productList,promotionsToBeApplied),0);
+		
+		assertEquals(280, promotionService.applyPromotion(cart,productList,promotionsToBeApplied),0);
 	}
 
 }
