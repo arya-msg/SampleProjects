@@ -12,6 +12,7 @@ import org.junit.Test;
 import com.ecom.promotionengine.service.PromotionService;
 import com.ecom.promotionengine.service.domain.Cart;
 import com.ecom.promotionengine.service.domain.Product;
+import com.ecom.promotionengine.service.domain.Promotion;
 import com.ecom.promotionengine.service.impl.PromotionServiceImpl;
 
 public class PromotionEngineServiceTest {
@@ -20,6 +21,7 @@ public class PromotionEngineServiceTest {
 	private Cart cart;
 	private static List<Product> productList;
 	private List<Character> skuList;
+	private static List<Promotion> promotionsToBeApplied;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -36,6 +38,11 @@ public class PromotionEngineServiceTest {
 		productList.add(productB);
 		productList.add(productC);
 		productList.add(productD);
+		promotionsToBeApplied = new ArrayList<Promotion>();
+		Promotion promoA = new Promotion("PromoA","buy 'n' items of a SKU for a fixed price (3 A's for 130) ");
+		Promotion promoB = new Promotion("promoB","buy SKU 1 & SKU 2 for a fixed price ( C + D = 30 )");
+		promotionsToBeApplied.add(promoA);
+		promotionsToBeApplied.add(promoB);
 				
 	}
 	@Before
@@ -53,7 +60,7 @@ public class PromotionEngineServiceTest {
 		skuList.add('B');
 		skuList.add('C');
 		cart.setSkuList(skuList);
-		assertEquals(100, promotionService.applyPromotion(cart,productList),0);
+		assertEquals(100, promotionService.applyPromotion(cart,productList,promotionsToBeApplied),0);
 	}
 	
 	@Test

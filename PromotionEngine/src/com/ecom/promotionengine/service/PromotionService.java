@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.ecom.promotionengine.service.domain.Cart;
 import com.ecom.promotionengine.service.domain.Product;
+import com.ecom.promotionengine.service.domain.Promotion;
 
 /**
  * The interface for promotion service.
@@ -15,6 +16,7 @@ import com.ecom.promotionengine.service.domain.Product;
  */
 public interface PromotionService {
 
-	public double applyPromotion(Cart cart, List<Product> productList);
+	public double applyPromotion(Cart cart, List<Product> productList, List<Promotion> promotionsToBeApplied);
+
 
 }
